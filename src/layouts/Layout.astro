@@ -5,9 +5,14 @@ import "../styles/global.css";
 interface Props {
 	title: string;
 	description?: string;
+	isHomePage?: boolean;
 }
 
-const { title, description = "The Neural Cyclist Blog" } = Astro.props;
+const {
+	title,
+	description = "The Neural Cyclist Blog",
+	isHomePage = false,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -25,7 +30,7 @@ const { title, description = "The Neural Cyclist Blog" } = Astro.props;
 			src="https://plausible.io/js/script.js"></script>
 	</head>
 	<body>
-		<LayoutWrapper client:load>
+		<LayoutWrapper client:load isHomePage={isHomePage}>
 			<slot />
 		</LayoutWrapper>
 	</body>
