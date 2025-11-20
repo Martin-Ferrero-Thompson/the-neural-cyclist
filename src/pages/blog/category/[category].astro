@@ -1,0 +1,74 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../../layouts/Layout.astro";
+import BlogCard from "../../../components/BlogCard.astro";
+
+export async function getStaticPaths() {
+    const posts = await getCollection("blog");
+    const uniqueCategories = [
+        ...new Set(posts.map((post) => post.data.category)),
+    ];
+
+    // Ensure all sidebar categories exist
+    const allCategories = new Set([
+        ...uniqueCategories,
+        "My Challenge",
+        "My Training",
+        "My Gear",
+        "My Nutrition",
+        "Partners",
+    ]);
+
+    const categories = [...allCategories];
+
+    return categories.map((category) => {
+        const filteredPosts = posts.filter(
+            (post) => post.data.category === category,
+        );
+        return {
+            params: { category: category.toLowerCase().replace(/\s+/g, "-") },
+            props: { category, posts: filteredPosts },
+        };
+    });
+}
+
+const { category, posts } = Astro.props;
+---
+
+<Layout title={`${category} - The Neural Cyclist`}>
+    <div class="space-y-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <span
+                class="text-brand-teal font-bold tracking-wider uppercase text-sm"
+                >Category</span
+            >
+            <h1 class="text-4xl font-display text-brand-blue mb-4">
+                {category}
+            </h1>
+            <p class="text-muted-foreground">
+                {posts.length}
+                {posts.length === 1 ? "story" : "stories"} in this collection
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {posts.map((post) => <BlogCard post={post} />)}
+        </div>
+
+        {
+            posts.length === 0 && (
+                <div class="text-center py-20">
+                    <p class="text-muted-foreground">
+                        No posts found in this category yet.
+                    </p>
+                    <a
+                        href="/blog"
+                        class="text-brand-blue hover:underline mt-4 inline-block"
+                    >
+                        Back to all stories
+                    </a>
+                </div>
+            )
+        }
+    </div>
+</Layout>

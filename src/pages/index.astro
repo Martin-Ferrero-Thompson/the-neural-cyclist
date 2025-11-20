@@ -1,0 +1,79 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="The Neural Cyclist - Home">
+	<div class="flex flex-col md:flex-row items-center gap-8 mt-10">
+		<div class="w-full md:w-1/2">
+			<!-- Placeholder image from Unsplash -->
+			<img
+				src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?q=80&w=1000&auto=format&fit=crop"
+				alt="Cyclist"
+				class="rounded-lg shadow-xl w-full h-auto object-cover aspect-[4/5] grayscale hover:grayscale-0 transition duration-500"
+			/>
+		</div>
+		<div class="w-full md:w-1/2 space-y-6">
+			<div class="bg-card border border-border rounded-xl p-8 shadow-sm">
+				<h1
+					class="text-6xl md:text-7xl font-display text-brand-blue mb-4 tracking-wide"
+				>
+					The Neural <span class="text-brand-teal">Cyclist</span>
+				</h1>
+				<p
+					class="text-xl text-muted-foreground leading-relaxed mb-6 font-body"
+				>
+					Welcome to my journey. I'm combining my passion for cycling
+					with the latest in neural technology and data analytics.
+					Join me as I train for the ultimate challenge in October
+					2026.
+				</p>
+				<p class="text-lg text-muted-foreground mb-8 font-body">
+					Here you'll find insights into my training, nutrition, gear,
+					and the partners who make this possible.
+				</p>
+				<div class="flex flex-wrap gap-4">
+					<a
+						href="/blog"
+						class="px-6 py-3 bg-brand-blue text-white rounded-md font-semibold hover:bg-blue-700 transition shadow-md hover:shadow-lg"
+					>
+						Read the Blog
+					</a>
+					<a
+						href="/blog/category/challenge"
+						class="px-6 py-3 bg-secondary text-secondary-foreground rounded-md font-semibold hover:bg-gray-200 transition border border-border"
+					>
+						The Challenge
+					</a>
+				</div>
+			</div>
+
+			<!-- Quick Stats or Highlights -->
+			<div class="grid grid-cols-3 gap-4 text-center">
+				<div class="p-4 bg-accent rounded-lg">
+					<span class="block text-3xl font-display text-brand-blue"
+						>2026</span
+					>
+					<span class="text-sm text-muted-foreground uppercase"
+						>Target Year</span
+					>
+				</div>
+				<div class="p-4 bg-accent rounded-lg">
+					<span class="block text-3xl font-display text-brand-teal"
+						>100%</span
+					>
+					<span class="text-sm text-muted-foreground uppercase"
+						>Committed</span
+					>
+				</div>
+				<div class="p-4 bg-accent rounded-lg">
+					<span class="block text-3xl font-display text-purple-600"
+						>AI</span
+					>
+					<span class="text-sm text-muted-foreground uppercase"
+						>Powered</span
+					>
+				</div>
+			</div>
+		</div>
+	</div>
+</Layout>

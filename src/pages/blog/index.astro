@@ -1,0 +1,62 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
+import BlogCard from "../../components/BlogCard.astro";
+
+const posts = (await getCollection("blog")).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const featuredPost = posts.find((post) => post.data.featured);
+const otherPosts = posts.filter((post) => post.slug !== featuredPost?.slug);
+---
+
+<Layout title="Blog - The Neural Cyclist">
+    <div class="space-y-12">
+        <div class="text-center max-w-2xl mx-auto mb-8">
+            <h1 class="text-4xl font-display text-brand-blue mb-4">
+                Latest Stories
+            </h1>
+            <p class="text-muted-foreground">
+                Follow my journey, training updates, and gear reviews.
+            </p>
+        </div>
+
+        {
+            featuredPost && (
+                <section class="mb-12">
+                    <div class="relative rounded-xl overflow-hidden shadow-lg group">
+                        <a href={`/blog/${featuredPost.slug}/`} class="block">
+                            <img
+                                src={featuredPost.data.heroImage}
+                                alt={featuredPost.data.title}
+                                class="w-full h-[400px] object-cover transition duration-700 group-hover:scale-105"
+                            />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-8">
+                                <span class="inline-block bg-brand-blue text-white text-xs font-bold px-3 py-1 rounded uppercase mb-3 w-fit">
+                                    Featured: {featuredPost.data.category}
+                                </span>
+                                <h2 class="text-3xl md:text-4xl font-headline font-bold text-white mb-2">
+                                    {featuredPost.data.title}
+                                </h2>
+                                <p class="text-gray-200 max-w-2xl mb-4 line-clamp-2">
+                                    {featuredPost.data.description}
+                                </p>
+                                <div class="text-gray-300 text-sm">
+                                    <FormattedDate
+                                        date={featuredPost.data.pubDate}
+                                    />
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+            )
+        }
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {otherPosts.map((post) => <BlogCard post={post} />)}
+        </div>
+    </div>
+</Layout>
