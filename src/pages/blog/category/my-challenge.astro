@@ -1,0 +1,101 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../../layouts/Layout.astro";
+import BlogCard from "../../../components/BlogCard.astro";
+import { Mountain, Target, Activity } from "lucide-react";
+
+const posts = await getCollection("blog");
+const challengePosts = posts.filter(
+    (post) => post.data.category === "My Challenge",
+);
+
+// Sort posts by date if needed, usually getCollection returns them in some order, but good to be explicit if date is available
+challengePosts.sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<Layout title="My Challenge - The Neural Cyclist">
+    <div class="space-y-12">
+        {/* Hero Section */}
+        <div
+            class="relative py-12 md:py-20 bg-slate-50/50 rounded-3xl overflow-hidden"
+        >
+            <div
+                class="absolute inset-0 opacity-10 bg-[url('/topography.svg')] bg-repeat"
+            >
+            </div>
+
+            <div class="relative z-10 max-w-4xl mx-auto px-6">
+                <span
+                    class="text-brand-teal font-bold tracking-wider uppercase text-sm mb-2 block"
+                    >The Journey</span
+                >
+                <h1
+                    class="text-5xl md:text-7xl font-display font-bold text-slate-900 mb-6 uppercase tracking-[0.6rem] md:tracking-[0.9rem]"
+                >
+                    My Challenge
+                </h1>
+                <p
+                    class="text-xl md:text-2xl text-slate-600 max-w-2xl mb-8 leading-relaxed"
+                >
+                    Why I decided to take this massive challenge and what it
+                    means to me.
+                </p>
+
+                <div class="flex flex-wrap gap-4 items-center">
+                    {/* Target Pill */}
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-2 bg-slate-200 rounded-full text-slate-700 font-medium text-sm md:text-base"
+                    >
+                        <Target size={18} />
+                        <span>Target: Oct 2026</span>
+                    </div>
+
+                    {/* Status Pill */}
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-2 bg-brand-blue text-white rounded-full font-medium text-sm md:text-base shadow-md shadow-brand-blue/20"
+                    >
+                        <Activity size={18} />
+                        <span>Status: Training</span>
+                    </div>
+
+                    {/* Icon Pill (Mountain) */}
+                    <div
+                        class="inline-flex items-center justify-center w-10 h-10 bg-slate-800 text-white rounded-full shadow-md"
+                    >
+                        <Mountain size={20} />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {/* Posts Grid */}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {challengePosts.map((post) => <BlogCard post={post} />)}
+        </div>
+
+        {
+            challengePosts.length === 0 && (
+                <div class="text-center py-20 bg-slate-50 rounded-2xl border border-slate-100">
+                    <div class="bg-slate-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Activity className="text-slate-400" size={32} />
+                    </div>
+                    <h3 class="text-xl font-headline font-bold text-slate-900 mb-2">
+                        Journey Beginning
+                    </h3>
+                    <p class="text-muted-foreground max-w-md mx-auto">
+                        I haven't documented any part of this challenge yet.
+                        Check back soon for updates!
+                    </p>
+                    <a
+                        href="/blog"
+                        class="text-brand-blue hover:underline mt-6 inline-block font-medium"
+                    >
+                        Read other stories
+                    </a>
+                </div>
+            )
+        }
+    </div>
+</Layout>
