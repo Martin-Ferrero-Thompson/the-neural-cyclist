@@ -1,58 +1,51 @@
-# Astro Starter Kit: Basics
+# The Neural Cyclist
 
-```sh
-bun create astro@latest -- --template basics
-```
+A personal blog and project site built with [Astro](https://astro.build), [React](https://react.dev), and [Tailwind CSS](https://tailwindcss.com).
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 📂 Project Structure
 
-## 🚀 Project Structure
+This project follows a standard Astro structure with some specific organizations for the blog and UI components.
 
-Inside of your Astro project, you'll see the following folders and files:
+### `/src`
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+*   **`components/`**: Reusable UI components.
+    *   `Sidebar.tsx`: The main navigation sidebar, built with React for interactive state (toggle, active links).
+    *   `Gallery.tsx`: An interactive image gallery component for use in MDX posts.
+    *   `BlogCard.astro`: Displays a preview summary of a blog post in listings.
+    *   `TableOfContents.astro`: Generates a TOC for blog posts.
+*   **`content/`**: The heart of the blog.
+    *   `blog/`: Contains all blog posts as `.md` or `.mdx` files.
+    *   `config.ts`: Defines the schema and collections for the content.
+*   **`layouts/`**:
+    *   `Layout.astro`: The main wrapper layout applied to all pages, handling the Sidebar and main content area.
+*   **`pages/`**: File-based routing.
+    *   `index.astro`: The homepage.
+    *   `blog/`: Routes for the blog index and individual posts.
+*   **`styles/`**:
+    *   `global.css`: Global styles, Tailwind directives, and custom CSS variables.
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 🚀 How to Use The Neural Cyclist
 
-## 🧞 Commands
+### Installation & Development
 
-All commands are run from the root of the project, from a terminal:
+1.  **Install dependencies:**
+    ```bash
+    bun install
+    ```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
+2.  **Start the development server:**
+    ```bash
+    bun dev
+    ```
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## 📝 How to Create a New Blog Post
+### 📝 How to Create a New Blog Post
 
 To create a new blog post for "The Neural Cyclist", follow these steps:
 
-### 1. Create the File
+#### 1. Create the File
 Create a new file in `src/content/blog/` with a `.md` or `.mdx` extension. The filename will become the URL slug (e.g., `my-new-post.md` becomes `/blog/my-new-post`).
 
-### 2. Add Frontmatter
+#### 2. Add Frontmatter
 At the top of your file, add the required metadata between `---` fences. Use this template:
 
 ```markdown
@@ -71,7 +64,7 @@ tags: ['tag1', 'tag2']
 Write your blog post content here using standard Markdown...
 ```
 
-### 3. Field Details
+#### 3. Field Details
 *   **title**: (Required) The main headline of your post.
 *   **description**: (Required) A short summary used for previews and SEO.
 *   **pubDate**: (Required) The publication date in `YYYY-MM-DD` format.
@@ -85,7 +78,7 @@ Write your blog post content here using standard Markdown...
 *   **featured**: (Optional) Set to `true` to highlight this post (defaults to `false`).
 *   **tags**: (Optional) A list of related keywords.
 
-### 4. Using MDX Components (Optional)
+#### 4. Using MDX Components (Optional)
 If you use the `.mdx` extension, you can import and use React components directly in your post, like the Gallery component:
 
 ```jsx
