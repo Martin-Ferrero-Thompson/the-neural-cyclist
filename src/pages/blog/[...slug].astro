@@ -40,18 +40,18 @@ import TableOfContents from "../../components/TableOfContents.astro";
                 </span>
             </div>
             <h1
-                class="text-5xl md:text-6xl font-headline font-bold mb-4 text-foreground"
+                class="text-5xl md:text-6xl font-headline font-bold mb-4 text-slate-900"
             >
                 {post.data.title}
             </h1>
-            <p class="text-2xl text-muted-foreground italic">
+            <p class="text-2xl text-slate-700 italic">
                 {post.data.description}
             </p>
         </div>
 
         <div class="flex flex-col lg:flex-row gap-12">
             <div
-                class="prose prose-xl dark:prose-invert max-w-3xl prose-headings:font-headline prose-headings:font-bold prose-a:text-brand-blue hover:prose-a:text-brand-teal prose-img:rounded-xl flex-1"
+                class="prose prose-xl dark:prose-invert max-w-3xl prose-headings:font-headline prose-headings:font-bold prose-headings:text-slate-900 prose-p:text-slate-800 prose-li:text-slate-800 prose-strong:text-slate-900 prose-a:text-brand-blue hover:prose-a:text-brand-teal prose-img:rounded-xl flex-1"
             >
                 <Content />
             </div>
