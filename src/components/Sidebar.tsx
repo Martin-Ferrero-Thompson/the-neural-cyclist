@@ -135,6 +135,11 @@ export function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
                             <a href="#" className="text-slate-400 hover:text-pink-600"><Instagram size={20} /></a>
                             <a href="#" className="text-slate-400 hover:text-red-600"><Youtube size={20} /></a>
                             <a href="#" className="text-slate-400 hover:text-blue-700"><Linkedin size={20} /></a>
+                            <a href="https://www.strava.com/athletes/180569524" className="text-slate-400 hover:text-orange-500" target="_blank" rel="noopener noreferrer" aria-label="Strava">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="currentColor">
+                                    <path d="M6.731 0 2 9.125h2.788L6.73 5.497l1.93 3.628h2.766zm4.694 9.125-1.372 2.756L8.66 9.125H6.547L10.053 16l3.484-6.875z" />
+                                </svg>
+                            </a>
                         </div>
                     </div>
 
