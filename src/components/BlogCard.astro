@@ -10,50 +10,47 @@ interface Props {
 const { post } = Astro.props;
 ---
 
-<article
-    class="bg-card border border-border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition group flex flex-col h-full"
->
-    <a href={`/blog/${post.slug}/`} class="block overflow-hidden">
-        {
-            post.data.heroImage && (
-                <img
-                    src={post.data.heroImage}
-                    alt={post.data.title}
-                    class="w-full h-48 object-cover transition duration-500 group-hover:scale-105"
-                />
-            )
-        }
-        {
-            !post.data.heroImage && (
-                <div class="h-48 bg-muted w-full flex items-center justify-center">
-                    <span class="text-muted-foreground">No Image</span>
-                </div>
-            )
-        }
-    </a>
-    <div class="p-6 flex flex-col flex-1">
-        <div class="mb-2 flex items-center justify-between">
-            <span
-                class="text-sm font-bold px-2 py-1 rounded uppercase bg-secondary text-secondary-foreground"
-            >
-                {post.data.category}
-            </span>
-            <span class="text-sm text-muted-foreground">
-                <FormattedDate date={post.data.pubDate} />
-            </span>
+<a href={`/blog/${post.slug}/`} class="group block h-full no-underline">
+    <article
+        class="bg-card border border-border rounded-lg overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-blue/30 transition-all duration-300 flex flex-col h-full"
+    >
+        <div class="overflow-hidden">
+            {
+                post.data.heroImage && (
+                    <img
+                        src={post.data.heroImage}
+                        alt={post.data.title}
+                        class="w-full h-48 object-cover transition duration-500 group-hover:scale-105"
+                    />
+                )
+            }
+            {
+                !post.data.heroImage && (
+                    <div class="h-48 bg-muted w-full flex items-center justify-center">
+                        <span class="text-muted-foreground">No Image</span>
+                    </div>
+                )
+            }
         </div>
-        <h2
-            class="text-2xl font-headline font-bold mb-2 text-foreground leading-tight"
-        >
-            <a
-                href={`/blog/${post.slug}/`}
-                class="hover:text-brand-blue transition"
+        <div class="p-6 flex flex-col flex-1">
+            <div class="mb-2 flex items-center justify-between">
+                <span
+                    class="text-sm font-bold px-2 py-1 rounded uppercase bg-secondary text-secondary-foreground"
+                >
+                    {post.data.category}
+                </span>
+                <span class="text-sm text-muted-foreground">
+                    <FormattedDate date={post.data.pubDate} />
+                </span>
+            </div>
+            <h2
+                class="text-2xl font-headline font-bold mb-2 text-foreground leading-tight group-hover:text-brand-blue transition-colors"
             >
                 {post.data.title}
-            </a>
-        </h2>
-        <p class="text-base text-muted-foreground mb-4 line-clamp-3 flex-1">
-            {post.data.description}
-        </p>
-    </div>
-</article>
+            </h2>
+            <p class="text-base text-muted-foreground mb-4 line-clamp-3 flex-1">
+                {post.data.description}
+            </p>
+        </div>
+    </article>
+</a>
