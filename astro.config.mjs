@@ -6,8 +6,11 @@ import react from '@astrojs/react';
 import mdx from '@astrojs/mdx';
 import vercel from '@astrojs/vercel';
 
+import sitemap from '@astrojs/sitemap';
+
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://example.com',
   output: 'static',
   adapter: vercel(),
 
@@ -15,7 +18,7 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
-  integrations: [react(), mdx()],
+  integrations: [react(), mdx(), sitemap()],
   markdown: {
     shikiConfig: {
       theme: 'dracula',
