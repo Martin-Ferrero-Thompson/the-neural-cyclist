@@ -132,7 +132,7 @@ export function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
                         <h3 className="px-2 text-base lg:text-lg xl:text-xl font-semibold text-slate-500 uppercase tracking-wider mb-4">Follow Me</h3>
                         <div className="flex space-x-4 px-2">
                             <a href="#" className="text-slate-400 hover:text-brand-blue"><Facebook size={20} /></a>
-                            <a href="#" className="text-slate-400 hover:text-pink-600"><Instagram size={20} /></a>
+                            <a href="https://www.instagram.com/riding4gbs/" className="text-slate-400 hover:text-pink-600" target="_blank" rel="noopener noreferrer"><Instagram size={20} /></a>
                             <a href="#" className="text-slate-400 hover:text-red-600"><Youtube size={20} /></a>
                             <a href="#" className="text-slate-400 hover:text-blue-700"><Linkedin size={20} /></a>
                             <a href="https://www.strava.com/athletes/180569524" className="text-slate-400 hover:text-orange-500" target="_blank" rel="noopener noreferrer" aria-label="Strava">
