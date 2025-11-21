@@ -6,7 +6,7 @@ export function LayoutWrapper({ children, isHomePage = false }: { children: Reac
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
     return (
-        <div className="flex min-h-screen bg-background font-body">
+        <div className="flex min-h-screen font-body">
             <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
             <main
                 className={cn(
