@@ -6,105 +6,176 @@ import Layout from "../layouts/Layout.astro";
     title="The Neural Cyclist - The Route"
     description="Explore the route across the Pyrenees, from the Atlantic to the Mediterranean."
 >
-    <div class="min-h-screen bg-white py-12 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-12">
-                <h1
-                    class="text-4xl font-bold text-gray-900 sm:text-5xl md:text-6xl font-oswald uppercase tracking-tight"
-                >
-                    The Route
-                </h1>
-                <p class="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
-                    From the Atlantic to the Mediterranean, traversing the spine
-                    of the Pyrenees.
+    <div class="text-center mb-12">
+        <h1
+            class="text-4xl font-bold text-gray-900 sm:text-5xl md:text-6xl font-oswald uppercase tracking-tight"
+        >
+            The Route
+        </h1>
+        <p class="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
+            From the Atlantic to the Mediterranean, traversing the spine of the
+            Pyrenees.
+        </p>
+    </div>
+
+    <div
+        class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100"
+    >
+        <div class="p-6 sm:p-8 lg:p-10">
+            <div class="text-lg text-gray-600 mb-8 space-y-4">
+                <p>
+                    This journey is more than just a ride; it's a testament to
+                    recovery and resilience. The route covers some of the most
+                    challenging and scenic passes in the Pyrenees, testing both
+                    physical endurance and mental fortitude.
+                </p>
+                <p>
+                    Starting from the Atlantic coast, we will make our way
+                    eastwards, conquering iconic climbs and descending into
+                    breathtaking valleys, until we finally reach the shores of
+                    the Mediterranean Sea.
                 </p>
             </div>
 
+            <div class="w-full">
+                <div
+                    class="relative w-full rounded-xl overflow-hidden shadow-lg cursor-pointer hover:shadow-2xl transition-shadow duration-300"
+                >
+                    <img
+                        id="mapTrigger"
+                        src="/riding4gbs-route.png"
+                        alt="Map of the route across the Pyrenees"
+                        class="w-full h-auto hover:opacity-95 transition-opacity duration-200"
+                        style="display: block;"
+                    />
+                </div>
+                <p class="text-center text-sm text-gray-500 mt-3 italic">
+                    Click the map to view enlarged
+                </p>
+            </div>
+
+            <!-- Lightbox Modal -->
             <div
-                class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100"
+                id="mapLightbox"
+                class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden items-center justify-center p-4"
+                style="cursor: zoom-out;"
             >
-                <div class="p-6 sm:p-8 lg:p-10">
-                    <div class="text-lg text-gray-600 mb-8 space-y-4">
-                        <p>
-                            This journey is more than just a ride; it's a
-                            testament to recovery and resilience. The route
-                            covers some of the most challenging and scenic
-                            passes in the Pyrenees, testing both physical
-                            endurance and mental fortitude.
-                        </p>
-                        <p>
-                            Starting from the Atlantic coast, we will make our
-                            way eastwards, conquering iconic climbs and
-                            descending into breathtaking valleys, until we
-                            finally reach the shores of the Mediterranean Sea.
-                        </p>
-                    </div>
-
-                    <div
-                        class="relative w-full rounded-xl overflow-hidden shadow-lg"
+                <button
+                    id="closeLightbox"
+                    class="absolute top-4 right-4 md:top-6 md:right-6 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-200 z-10 group"
+                    aria-label="Close lightbox"
+                >
+                    <svg
+                        class="w-6 h-6 md:w-8 md:h-8 group-hover:rotate-90 transition-transform duration-300"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        stroke-width="2.5"
                     >
-                        <img
-                            src="/riding4gbs-route.png"
-                            alt="Map of the route across the Pyrenees"
-                            class="w-full h-auto object-contain bg-gray-50"
-                        />
-                    </div>
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                <img
+                    src="/riding4gbs-route.png"
+                    alt="Map of the route across the Pyrenees - Enlarged view"
+                    class="max-w-full max-h-full object-contain"
+                />
+            </div>
 
-                    <div
-                        class="mt-10 bg-gray-50 rounded-2xl p-8 border border-gray-100"
-                    >
-                        <div
-                            class="flex flex-row justify-between items-center text-center divide-x divide-gray-200"
+            <div
+                class="mt-10 bg-gray-50 rounded-2xl p-8 border border-gray-100"
+            >
+                <div
+                    class="flex flex-row justify-between items-center text-center divide-x divide-gray-200"
+                >
+                    <div class="flex-1 px-4">
+                        <p
+                            class="text-sm font-medium text-blue-600 uppercase tracking-wider"
                         >
-                            <div class="flex-1 px-4">
-                                <p
-                                    class="text-sm font-medium text-blue-600 uppercase tracking-wider"
-                                >
-                                    Duration
-                                </p>
-                                <p
-                                    class="mt-1 text-3xl font-bold text-gray-900"
-                                >
-                                    ~21 Days
-                                </p>
-                            </div>
-                            <div class="flex-1 px-4">
-                                <p
-                                    class="text-sm font-medium text-blue-600 uppercase tracking-wider"
-                                >
-                                    Total Distance
-                                </p>
-                                <p
-                                    class="mt-1 text-3xl font-bold text-gray-900"
-                                >
-                                    ~2000 km
-                                </p>
-                            </div>
-                            <div class="flex-1 px-4">
-                                <p
-                                    class="text-sm font-medium text-blue-600 uppercase tracking-wider"
-                                >
-                                    Elevation Gain
-                                </p>
-                                <p
-                                    class="mt-1 text-3xl font-bold text-gray-900"
-                                >
-                                    ~38,000 m
-                                </p>
-                            </div>
-                        </div>
+                            Duration
+                        </p>
+                        <p class="mt-1 text-3xl font-bold text-gray-900">
+                            ~21 Days
+                        </p>
+                    </div>
+                    <div class="flex-1 px-4">
+                        <p
+                            class="text-sm font-medium text-blue-600 uppercase tracking-wider"
+                        >
+                            Total Distance
+                        </p>
+                        <p class="mt-1 text-3xl font-bold text-gray-900">
+                            ~2000 km
+                        </p>
+                    </div>
+                    <div class="flex-1 px-4">
+                        <p
+                            class="text-sm font-medium text-blue-600 uppercase tracking-wider"
+                        >
+                            Elevation Gain
+                        </p>
+                        <p class="mt-1 text-3xl font-bold text-gray-900">
+                            ~38,000 m
+                        </p>
                     </div>
                 </div>
             </div>
-
-            <div class="mt-12 text-center">
-                <a
-                    href="/"
-                    class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10 transition-colors duration-300"
-                >
-                    Back to Home
-                </a>
-            </div>
         </div>
     </div>
+
+    <div class="mt-12 text-center">
+        <a
+            href="/"
+            class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10 transition-colors duration-300"
+        >
+            Back to Home
+        </a>
+    </div>
 </Layout>
+
+<script>
+    // Lightbox functionality
+    const mapTrigger = document.getElementById("mapTrigger");
+    const mapLightbox = document.getElementById("mapLightbox");
+    const closeLightbox = document.getElementById("closeLightbox");
+
+    // Open lightbox
+    mapTrigger?.addEventListener("click", () => {
+        mapLightbox?.classList.remove("hidden");
+        mapLightbox?.classList.add("flex");
+        document.body.style.overflow = "hidden";
+    });
+
+    // Close lightbox via close button
+    closeLightbox?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        mapLightbox?.classList.add("hidden");
+        mapLightbox?.classList.remove("flex");
+        document.body.style.overflow = "";
+    });
+
+    // Close lightbox via clicking the backdrop
+    mapLightbox?.addEventListener("click", (e) => {
+        if (e.target === mapLightbox) {
+            mapLightbox.classList.add("hidden");
+            mapLightbox.classList.remove("flex");
+            document.body.style.overflow = "";
+        }
+    });
+
+    // Close lightbox via Escape key
+    document.addEventListener("keydown", (e) => {
+        if (
+            e.key === "Escape" &&
+            mapLightbox &&
+            !mapLightbox.classList.contains("hidden")
+        ) {
+            mapLightbox.classList.add("hidden");
+            mapLightbox.classList.remove("flex");
+            document.body.style.overflow = "";
+        }
+    });
+</script>
