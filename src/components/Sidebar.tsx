@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Menu, ChevronLeft, ChevronRight, Instagram, Youtube, Facebook, Linkedin, Bike, Home, BookOpen, Activity, Utensils, Users, Coffee } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import packageJson from '../../package.json';
 
 interface SidebarProps {
     isOpen: boolean;
@@ -146,7 +147,7 @@ export function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
                     {/* Footer */}
                     <div className="mt-6 px-2 text-sm lg:text-base xl:text-lg text-slate-600">
                         <p>&copy; 2025 The Neural Cyclist.</p>
-                        <p>All rights reserved.</p>
+                        <p className="text-xs lg:text-sm xl:text-base mt-1">v{packageJson.version} | All rights reserved.</p>
                     </div>
                 </div>
             </aside>
